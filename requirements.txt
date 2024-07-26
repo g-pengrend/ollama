@@ -1,0 +1,10 @@
+# python 3.10
+python-magic-bin
+ollama==0.3.0
+beautifulsoup4==4.12.3
+nltk
+gradio
+chromadb==0.4.24
+mattsollamatools==0.0.21
+Requests==2.31.0
+pdfminer.six
