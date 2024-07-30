@@ -1,13 +1,15 @@
 import os, ollama, chromadb, time
 from utilities import readtext, getconfig
-from mattsollamatools import chunker, chunk_text_by_sentences
+from tools import chunker, chunk_text_by_sentences, chunk_text_by_words
 
 def process_files_in_folder(folder_path, embedmodel, collection):
     for root, _, files in os.walk(folder_path):
         for filename in files:
             filepath = os.path.join(root, filename)
             text = readtext(filepath)
-            chunks = chunk_text_by_sentences(source_text=text, sentences_per_chunk=7, overlap=0)
+            # decide if you want to use chunk by sentence or by words
+            chunks = chunk_text_by_words(source_text=text, words_per_chunk=1000, overlap=200)
+            #chunks = chunk_text_by_sentences(source_text=text, sentences_per_chunk=15, overlap=3)
             print(f"Processing {filename} with {len(chunks)} chunks")
             for index, chunk in enumerate(chunks):
                 embed = ollama.embeddings(model=embedmodel, prompt=chunk)['embedding']
