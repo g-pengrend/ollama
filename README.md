@@ -50,3 +50,16 @@
 
 3. **Pygame Integration:**
    - Added Pygame with streaming LLM. To run, execute: `python instruct_pygame.py`
+
+| **Aspect**              | **Gradio**                              | **Streamlit**                            | **Pygame**                              |
+|-------------------------|-----------------------------------------|------------------------------------------|----------------------------------------|
+| **Primary Use Case**    | Quick prototyping of machine learning models with interactive interfaces. | Building data apps with interactive UI and real-time updates. | Creating interactive games and simulations, including applications with real-time graphics. |
+| **Ease of Use**         | High – simple and intuitive API, designed for ML demos and prototyping. | High – straightforward API, good for data apps and dashboards. | Moderate – more complex, requires knowledge of game development and graphics programming. |
+| **UI Elements**         | Provides a range of pre-built UI components like sliders, text inputs, and image uploaders. | Offers a variety of UI elements like sliders, buttons, and graphs, with a focus on data visualization. | Customizable UI elements for game interfaces, but requires manual creation of elements. |
+| **Integration with LLMs** | Easy – designed to integrate with models and provides built-in support for ML tasks. | Moderate – supports integration with models, but might require more setup compared to Gradio. | Challenging – not natively designed for ML models, requires custom integration and handling. |
+| **Real-Time Updates**   | Supported – allows for real-time interaction and feedback. | Supported – handles live updates and interactions effectively. | Supported – handles real-time updates well for games and simulations. |
+| **Deployment**          | Easy – Gradio apps can be shared through links or integrated into other platforms. | Easy – Streamlit apps can be deployed as web apps, and integration with cloud services is straightforward. | Complex – typically requires packaging and distribution as standalone applications. |
+| **Customizability**     | Moderate – offers customization within predefined components. | High – provides flexibility in designing custom UIs and layouts. | High – allows for complete control over graphics and interactions, but requires more effort. |
+| **Performance**         | Good – optimized for handling ML model interactions. | Good – performs well with data-heavy applications and real-time updates. | High – optimized for games and interactive graphics, performance depends on the implementation. |
+| **Learning Curve**      | Low – easy to start with for ML applications. | Low to Moderate – easy for data apps, but might need learning for complex interactions. | High – requires learning Pygame library and game development concepts. |
+| **Page Navigation Capabilities** | Limited – no native support; workarounds involve using different components or interfaces within the same app. | Limited but Possible – does not support traditional page navigation but can use elements like `st.selectbox` or `st.radio` to switch between views. | Supported but Manual – no built-in page navigation; requires manual coding to handle different screens or states. |
