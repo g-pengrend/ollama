@@ -17,7 +17,7 @@
    - **Mac:** `brew install libmagic`
 
 4. **Set up the environment:**
-   - Note: the requirements file is for windows, if on mac, make sure step 3 is done correctly first
+   - Note: the requirements file is for Windows; if on Mac, make sure step 3 is done correctly first.
    - Install all required packages: `pip install -r requirements.txt`
 
 5. **Model Configuration:**
@@ -39,3 +39,14 @@
 
 10. **Generate a Response:**
     - Use the generate script with your input: `python3 generate.py <yourinput>`
+
+### Additional Integrations (Did not implement RAG with this yet)
+
+1. **Gradio Integration:** 
+   - Added Gradio with streaming LLM. To run, execute: `python chat_gradio.py`
+
+2. **Streamlit Integration:**
+   - Added Streamlit with streaming LLM. To run, execute: `streamlit run chat_streamlit.py`
+
+3. **Pygame Integration:**
+   - Added Pygame with streaming LLM. To run, execute: `python instruct_pygame.py`
