@@ -1,11 +1,11 @@
-# Build RAG with Python
+# RAG Builder with Python
 
-## Seamlessly Integrate PDF, Text, and HTML Documents (Currently supports these only)
+## Seamlessly Integrate PDF, Text, and HTML Documents (Supports these formats only currently)
 
 ### Installation Steps
 
 1. **Install Anaconda:**
-   - Download and install Anaconda from the [official website](https://www.anaconda.com/products/distribution#download-section).
+   - Download and install Anaconda from the [Anaconda website](https://www.anaconda.com/products/distribution#download-section).
 
 2. **Create and Activate Conda Environment:**
    - Create a new environment: `conda create -n ollama python=3.10`
@@ -14,33 +14,43 @@
 3. **Install the magic tools:**
    - **Debian/Ubuntu:** `sudo apt-get install libmagic1`
    - **Windows:** Use the `python-magic-bin` package which includes the necessary DLLs: `pip install python-magic-bin`
-   - **Mac:** `brew install libmagic`
+   - **Mac:** First, install Homebrew by following these steps: 
+     - Open the terminal and run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`.
+     - Then, install libmagic using `brew install libmagic`.
 
-4. **Set up the environment:**
-   - Note: the requirements file is for Windows; if on Mac, make sure step 3 is done correctly first.
-   - Install all required packages: `pip install -r requirements.txt`
+4. **Install Microsoft C++ Build Tools (For Windows):**
+   - Download and install Microsoft C++ Build Tools from the [Build Tools website](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+   - Install the default selection should be sufficient
 
-5. **Model Configuration:**
-   - Ensure the models listed in `config.ini` are available. For instance, to use `nomic-embed-text`, execute: `ollama pull nomic-embed-text`
+5. **Set up the environment:**
+   - **Mac:** `python -m pip install -r requirements_mac.txt`
+   - **Windows:** `python -m pip install -r requirements_win.txt`
+
+6. **Model Configuration:**
+   - Visit the [ollama website](https://ollama.ai/) and follow the installation instructions for your operating system.
+   - Ensure the models listed in `config.ini` are available. For example, to use `nomic-embed-text`, run: `ollama pull nomic-embed-text`
+   - To use the latest version of `llama2`, run: `ollama pull llama2:latest`
    - Update `config.ini` to specify the models you intend to use.
 
-6. **Run ChromaDB:**
+7. **Run ChromaDB:**
    - Start ChromaDB in a separate terminal: `chroma run --host localhost --port 8000 --path ../db`
 
-7. **Prepare Your Documents:**
+8. **Prepare Your Documents:**
+   - Create a folder named `SOURCE_DOCUMENTS`
    - Upload your documents into the `SOURCE_DOCUMENTS` folder.
 
-8. **Customization:**
+9. **Customization:**
    - Open `import.py` to choose your preferred chunking strategy in the `process_files_in_folder` function.
    - Modify `utilities.py` to load other document types if needed. Currently, it supports PDF, text, and HTML.
 
-9. **Import Your Documents:**
-   - Execute the import script: `python3 import.py`
+10. **Import Your Documents:**
+   - Ensure the NLTK library is installed and the 'punkt' resource is downloaded. If not, run: `python -c "import nltk; nltk.download('punkt')"`
+   - Run the import script: `python import.py`
 
-10. **Generate a Response:**
-    - Use the generate script with your input: `python3 generate.py <yourinput>`
+11. **Generate a Response:**
+    - Use the generate script with your input: `python generate.py <yourinput>`
 
-### Additional Integrations (Did not implement RAG with this yet)
+### Additional Integrations (RAG integration pending)
 
 1. **Gradio Integration:** 
    - Added Gradio with streaming LLM. To run, execute: `python chat_gradio.py`
