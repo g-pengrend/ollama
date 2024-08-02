@@ -28,6 +28,12 @@ collection = chroma.get_or_create_collection(name="python-rag-ollama", metadata=
 embedmodel = getconfig()["embedmodel"]
 starttime = time.time()
 folder_path = 'SOURCE_DOCUMENTS'
+# Check if the directory exists
+if not os.path.exists(folder_path):
+    # Create the directory
+    os.makedirs(folder_path)
+    print(f"Directory '{folder_path}' created.")
+
 process_files_in_folder(folder_path, embedmodel, collection)
 
 # with open('sourcedocs.txt') as f:
