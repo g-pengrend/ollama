@@ -5,16 +5,29 @@ from tools import chunker, chunk_text_by_sentences, chunk_text_by_words
 def process_files_in_folder(folder_path, embedmodel, collection):
     for root, _, files in os.walk(folder_path):
         for filename in files:
-            filepath = os.path.join(root, filename)
-            text = readtext(filepath)
-            # decide if you want to use chunk by sentence or by words
-            chunks = chunk_text_by_words(source_text=text, words_per_chunk=1000, overlap=200)
-            #chunks = chunk_text_by_sentences(source_text=text, sentences_per_chunk=15, overlap=3)
-            print(f"Processing {filename} with {len(chunks)} chunks")
-            for index, chunk in enumerate(chunks):
-                embed = ollama.embeddings(model=embedmodel, prompt=chunk)['embedding']
-                print(".", end="", flush=True)
-                collection.add([filename + str(index)], [embed], documents=[chunk], metadatas={"source": filename})
+            if filename == "read_from_webpage.txt":
+                web_path = os.path.join(root, filename)
+                with open(web_path, 'r') as f:
+                    lines = f.readlines()
+                    for filename in lines:
+                        text = readtext(filename)
+                        chunks = chunk_text_by_sentences(source_text=text, sentences_per_chunk=7, overlap=3)
+                        print(f"Processing {filename} with {len(chunks)} chunks")
+                        for index, chunk in enumerate(chunks):
+                            embed = ollama.embeddings(model=embedmodel, prompt=chunk)['embedding']
+                            print(".", end="", flush=True)
+                            collection.add([filename + str(index)], [embed], documents=[chunk], metadatas={"source": filename})
+            else:
+                filepath = os.path.join(root, filename)
+                text = readtext(filepath)
+                # decide if you want to use chunk by sentence or by words
+                chunks = chunk_text_by_words(source_text=text, words_per_chunk=1000, overlap=200)
+                #chunks = chunk_text_by_sentences(source_text=text, sentences_per_chunk=15, overlap=3)
+                print(f"Processing {filename} with {len(chunks)} chunks")
+                for index, chunk in enumerate(chunks):
+                    embed = ollama.embeddings(model=embedmodel, prompt=chunk)['embedding']
+                    print(".", end="", flush=True)
+                    collection.add([filename + str(index)], [embed], documents=[chunk], metadatas={"source": filename})
 
 collectionname="python-rag-ollama"
 
