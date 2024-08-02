@@ -46,6 +46,12 @@ def readtext(path):
     print(f"\nEmbedding {filename} as {filetype}")
     
     text = ""
+    if filetype == 'application/pdf':
+        text = extract_text(filename)
+        text = text.encode('utf-8', errors='ignore').decode('utf-8')
+    if filetype == 'text/plain':
+        with open(filename, 'rb') as f:
+            text = f.read().decode('utf-8')    
     if filetype == 'text/html':
         with open(filename, 'rb') as f:
             soup = BeautifulSoup(f, 'html.parser')
