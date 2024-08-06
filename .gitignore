@@ -6,3 +6,6 @@
 *.pyc
 *.pyc
 
+SOURCE_DOCUMENTS/gutenberg.txt
+SOURCE_DOCUMENTS/sourcedocs.txt
+*.png
