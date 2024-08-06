@@ -8,8 +8,12 @@
    - Download and install Anaconda from the [Anaconda website](https://www.anaconda.com/products/distribution#download-section).
 
 2. **Create and Activate Conda Environment:**
+   - Open a new Anaconda Terminal or Command Prompt. It should look something like this, with the environment name in brackets (`your environment name`):
+
+   Example: ![Anaconda Terminal](./assets/at.png)
    - Create a new environment: `conda create -n ollama python=3.10`
    - Activate the environment: `conda activate ollama`
+   - Navigate to the correct path in your anaconda terminal before the next steps.
 
 3. **Install the magic tools:**
    - **Debian/Ubuntu:** `sudo apt-get install libmagic1`
@@ -20,9 +24,15 @@
 
 4. **Install Microsoft C++ Build Tools (For Windows):**
    - Download and install Microsoft C++ Build Tools from the [Build Tools website](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
-   - Install the default selection should be sufficient
+   - Click on modify
+   ![Build Tools](./assets/mbt.png)
+   - Install the necessary tools based on the image below:
+   ![Build Tools 2](./assets/mbt2.png)
 
 5. **Set up the environment:**
+   - Make sure you are in the correct path and environment
+
+   Example: ![Correct Path](./assets/path.png)
    - **Mac:** `python -m pip install -r requirements_mac.txt`
    - **Windows:** `python -m pip install -r requirements_win.txt`
 
@@ -33,10 +43,11 @@
    - Update `config.ini` to specify the models you intend to use.
 
 7. **Run ChromaDB:**
-   - Start ChromaDB in a separate terminal: `chroma run --host localhost --port 8000 --path ../db`
+   - Open a separate terminal, ensure it is in the same conda environment i.e.: ollama
+   - Start a ChromaDB in the separate terminal: `chroma run --host localhost --port 8000 --path ../db`
 
 8. **Prepare Your Documents:**
-   - Create a folder named `SOURCE_DOCUMENTS`
+   - Create a folder named `SOURCE_DOCUMENTS` if it does not exist.
    - Upload your documents into the `SOURCE_DOCUMENTS` folder.
 
 9. **Customization:**
@@ -50,7 +61,8 @@
 11. **Generate a Response:**
     - Use the generate script with your input: `python generate.py <yourinput>`
 
-### Additional Integrations (RAG integration pending)
+### Additional Integrations (RAG integration pending implementation)
+#### This setup does not include RAG integration yet. We are working on it and will update the documentation accordingly when ready.
 
 1. **Gradio Integration:** 
    - Added Gradio with streaming LLM. To run, execute: `python chat_gradio.py`
