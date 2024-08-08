@@ -1,6 +1,6 @@
 # RAG Builder with Python
 
-## Seamlessly Integrate PDF, Text, and HTML Documents (Supports these formats only currently)
+## Seamlessly Integrate PDF, Text, and HTML Documents (Supports these formats for basic self-implemented RAG on Ollama)
 
 ### Installation Steps
 
@@ -61,7 +61,20 @@
 11. **Generate a Response:**
     - Use the generate script with your input: `python generate.py <yourinput>`
 
-### Additional Integrations (RAG integration pending implementation)
+## Additional Integrations
+
+### RAG Implementation with all document types 
+
+1. **Import Your Documents:**
+   - This time, we are creating a local DB instead of running a chroma server.
+   - Currently running on CPU only, to enable GPU support, you need to install Pytorch and other dependencies for CUDA.
+   - Run the import script: `python ./rag_langchain/import.py`
+
+2. **Generate a Response:**
+    - Start the chat with: `python ./rag_langchain/run_rag.py`
+---
+### Ollama implementation with various UIs.
+
 #### This setup does not include RAG integration yet. We are working on it and will update the documentation accordingly when ready.
 
 1. **Gradio Integration:** 
@@ -85,3 +98,4 @@
 | **Performance**         | Good – optimized for handling ML model interactions. | Good – performs well with data-heavy applications and real-time updates. | High – optimized for games and interactive graphics, performance depends on the implementation. |
 | **Learning Curve**      | Low – easy to start with for ML applications. | Low to Moderate – easy for data apps, but might need learning for complex interactions. | High – requires learning Pygame library and game development concepts. |
 | **Page Navigation Capabilities** | Limited – no native support; workarounds involve using different components or interfaces within the same app. | Limited but Possible – does not support traditional page navigation but can use elements like `st.selectbox` or `st.radio` to switch between views. | Supported but Manual – no built-in page navigation; requires manual coding to handle different screens or states. |
+
