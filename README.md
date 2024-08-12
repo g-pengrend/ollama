@@ -64,14 +64,18 @@
 ## Additional Integrations
 
 ### RAG Implementation with all document types 
+- This time, we are creating a local DB instead of running a chroma server.
+- Currently running on CPU only, to enable GPU support, you need to install Pytorch and other dependencies for CUDA.
 
-1. **Import Your Documents:**
-   - This time, we are creating a local DB instead of running a chroma server.
-   - Currently running on CPU only, to enable GPU support, you need to install Pytorch and other dependencies for CUDA.
-   - Run the import script: `python ./rag_langchain/import.py`
+1. **Intial Setup:**
+   - Ensure you have your own SOURCE_DOCUMENTS folder in the same path as the ingest.py script.
+   - Assuming you are in your ollama directory, cd to rag_langchain directory: `cd rag_langchain`
 
-2. **Generate a Response:**
-    - Start the chat with: `python ./rag_langchain/run_rag.py`
+2. **Import Your Documents:**
+   - Run the import script: `python ingest.py` 
+
+3. **Generate a Response:**
+    - Start the chat with: `python run_rag.py`
 ---
 ### Ollama implementation with various UIs.
 
